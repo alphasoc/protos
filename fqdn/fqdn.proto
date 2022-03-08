@@ -16,6 +16,7 @@ message ResolveRequest {
     WISDOM = 2;
   }
   FQDNSrc src = 2;          // default == UNKNOWN
+  int64 ttl = 3;
 }
 
 message ResolveReply {

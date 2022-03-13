@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "github.com/mrozitron/protos/fqdn";
+option go_package = "github.com/alphasoc/protos/fqdn";
 
 package fqdn;
 

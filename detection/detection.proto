@@ -5,10 +5,10 @@ option go_package = "github.com/alphasoc/protos/detection";
 package detection;
 
 service DetectionProc {
-  rpc Process (Detections) returns (ProcessedReply) {}
+  rpc Process (DetectionData) returns (ProcessedReply) {}
 }
 
-message Detections {
+message DetectionData {
   repeated Detection dets = 1;
   repeated Expiration exps = 2;
 }
@@ -36,9 +36,10 @@ message Detection {
     HIGH = 3;
   }
   Severity sev = 3;
-  string service_name = 4;
-  Node node = 5;
-  repeated Threat threats = 6;
+  string action_type = 4;
+  string service_name = 5;
+  Node node = 6;
+  repeated Threat threats = 7;
 }
 
 message ProcessedReply {

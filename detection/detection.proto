@@ -19,6 +19,12 @@ message Node {
 
 message Expiration {
   Node node = 1;
+  enum Src {
+    UNKNOWN = 0;
+    TIP = 1;
+    WISDOM = 2;
+  }
+  Src src = 2;          // taken from fqdn.proto
 }
 
 message Threat {

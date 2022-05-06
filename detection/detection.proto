@@ -10,21 +10,10 @@ service DetectionProc {
 
 message DetectionData {
   repeated Detection dets = 1;
-  repeated Expiration exps = 2;
 }
 
 message Node {
   string addr = 1;
-}
-
-message Expiration {
-  Node node = 1;
-  enum Src {
-    UNKNOWN = 0;
-    TIP = 1;
-    WISDOM = 2;
-  }
-  Src src = 2;          // taken from fqdn.proto
 }
 
 message Threat {
@@ -44,8 +33,9 @@ message Detection {
   Severity sev = 3;
   string action_type = 4;
   string service_name = 5;
-  Node node = 6;
-  repeated Threat threats = 7;
+  string scout_name = 6;
+  Node node = 7;
+  repeated Threat threats = 8;
 }
 
 message ProcessedReply {

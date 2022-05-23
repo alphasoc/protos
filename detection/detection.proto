@@ -4,10 +4,6 @@ option go_package = "github.com/alphasoc/protos/detection";
 
 package detection;
 
-service DetectionProc {
-  rpc Process (DetectionData) returns (ProcessedReply) {}
-}
-
 message DetectionData {
   repeated Detection dets = 1;
 }

@@ -4,16 +4,16 @@ option go_package = "github.com/alphasoc/protos/fqdn";
 
 package fqdn;
 
+message ResolveRequests {
+  repeated ResolveRequest reqs = 1;
+}
+
 message ResolveRequest {
-  repeated string fqdns = 1;
+  string fqdn = 1;
   enum Src {
     UNKNOWN = 0;
     TIP = 1;
     WISDOM = 2;
   }
   Src src = 2;          // default == UNKNOWN
-}
-
-message ResolveReply {
-  bool rc = 1;
 }

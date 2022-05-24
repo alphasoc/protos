@@ -33,7 +33,3 @@ message Detection {
   Node node = 7;
   repeated Threat threats = 8;
 }
-
-message ProcessedReply {
-  bool rc = 1;
-}

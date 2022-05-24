@@ -66,7 +66,54 @@ func (x ResolveRequest_Src) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use ResolveRequest_Src.Descriptor instead.
 func (ResolveRequest_Src) EnumDescriptor() ([]byte, []int) {
-	return file_fqdn_fqdn_proto_rawDescGZIP(), []int{0, 0}
+	return file_fqdn_fqdn_proto_rawDescGZIP(), []int{1, 0}
+}
+
+type ResolveRequests struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Reqs []*ResolveRequest `protobuf:"bytes,1,rep,name=reqs,proto3" json:"reqs,omitempty"`
+}
+
+func (x *ResolveRequests) Reset() {
+	*x = ResolveRequests{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_fqdn_fqdn_proto_msgTypes[0]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ResolveRequests) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ResolveRequests) ProtoMessage() {}
+
+func (x *ResolveRequests) ProtoReflect() protoreflect.Message {
+	mi := &file_fqdn_fqdn_proto_msgTypes[0]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ResolveRequests.ProtoReflect.Descriptor instead.
+func (*ResolveRequests) Descriptor() ([]byte, []int) {
+	return file_fqdn_fqdn_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *ResolveRequests) GetReqs() []*ResolveRequest {
+	if x != nil {
+		return x.Reqs
+	}
+	return nil
 }
 
 type ResolveRequest struct {
@@ -74,14 +121,14 @@ type ResolveRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Fqdns []string           `protobuf:"bytes,1,rep,name=fqdns,proto3" json:"fqdns,omitempty"`
-	Src   ResolveRequest_Src `protobuf:"varint,2,opt,name=src,proto3,enum=fqdn.ResolveRequest_Src" json:"src,omitempty"` // default == UNKNOWN
+	Fqdn string             `protobuf:"bytes,1,opt,name=fqdn,proto3" json:"fqdn,omitempty"`
+	Src  ResolveRequest_Src `protobuf:"varint,2,opt,name=src,proto3,enum=fqdn.ResolveRequest_Src" json:"src,omitempty"` // default == UNKNOWN
 }
 
 func (x *ResolveRequest) Reset() {
 	*x = ResolveRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_fqdn_fqdn_proto_msgTypes[0]
+		mi := &file_fqdn_fqdn_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -94,7 +141,7 @@ func (x *ResolveRequest) String() string {
 func (*ResolveRequest) ProtoMessage() {}
 
 func (x *ResolveRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_fqdn_fqdn_proto_msgTypes[0]
+	mi := &file_fqdn_fqdn_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -107,14 +154,14 @@ func (x *ResolveRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResolveRequest.ProtoReflect.Descriptor instead.
 func (*ResolveRequest) Descriptor() ([]byte, []int) {
-	return file_fqdn_fqdn_proto_rawDescGZIP(), []int{0}
+	return file_fqdn_fqdn_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *ResolveRequest) GetFqdns() []string {
+func (x *ResolveRequest) GetFqdn() string {
 	if x != nil {
-		return x.Fqdns
+		return x.Fqdn
 	}
-	return nil
+	return ""
 }
 
 func (x *ResolveRequest) GetSrc() ResolveRequest_Src {
@@ -124,70 +171,25 @@ func (x *ResolveRequest) GetSrc() ResolveRequest_Src {
 	return ResolveRequest_UNKNOWN
 }
 
-type ResolveReply struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Rc bool `protobuf:"varint,1,opt,name=rc,proto3" json:"rc,omitempty"`
-}
-
-func (x *ResolveReply) Reset() {
-	*x = ResolveReply{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_fqdn_fqdn_proto_msgTypes[1]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *ResolveReply) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ResolveReply) ProtoMessage() {}
-
-func (x *ResolveReply) ProtoReflect() protoreflect.Message {
-	mi := &file_fqdn_fqdn_proto_msgTypes[1]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ResolveReply.ProtoReflect.Descriptor instead.
-func (*ResolveReply) Descriptor() ([]byte, []int) {
-	return file_fqdn_fqdn_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *ResolveReply) GetRc() bool {
-	if x != nil {
-		return x.Rc
-	}
-	return false
-}
-
 var File_fqdn_fqdn_proto protoreflect.FileDescriptor
 
 var file_fqdn_fqdn_proto_rawDesc = []byte{
 	0x0a, 0x0f, 0x66, 0x71, 0x64, 0x6e, 0x2f, 0x66, 0x71, 0x64, 0x6e, 0x2e, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x12, 0x04, 0x66, 0x71, 0x64, 0x6e, 0x22, 0x7b, 0x0a, 0x0e, 0x52, 0x65, 0x73, 0x6f, 0x6c,
-	0x76, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x14, 0x0a, 0x05, 0x66, 0x71, 0x64,
-	0x6e, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x05, 0x66, 0x71, 0x64, 0x6e, 0x73, 0x12,
-	0x2a, 0x0a, 0x03, 0x73, 0x72, 0x63, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x18, 0x2e, 0x66,
-	0x71, 0x64, 0x6e, 0x2e, 0x52, 0x65, 0x73, 0x6f, 0x6c, 0x76, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x2e, 0x53, 0x72, 0x63, 0x52, 0x03, 0x73, 0x72, 0x63, 0x22, 0x27, 0x0a, 0x03, 0x53,
-	0x72, 0x63, 0x12, 0x0b, 0x0a, 0x07, 0x55, 0x4e, 0x4b, 0x4e, 0x4f, 0x57, 0x4e, 0x10, 0x00, 0x12,
-	0x07, 0x0a, 0x03, 0x54, 0x49, 0x50, 0x10, 0x01, 0x12, 0x0a, 0x0a, 0x06, 0x57, 0x49, 0x53, 0x44,
-	0x4f, 0x4d, 0x10, 0x02, 0x22, 0x1e, 0x0a, 0x0c, 0x52, 0x65, 0x73, 0x6f, 0x6c, 0x76, 0x65, 0x52,
-	0x65, 0x70, 0x6c, 0x79, 0x12, 0x0e, 0x0a, 0x02, 0x72, 0x63, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08,
-	0x52, 0x02, 0x72, 0x63, 0x42, 0x21, 0x5a, 0x1f, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63,
-	0x6f, 0x6d, 0x2f, 0x61, 0x6c, 0x70, 0x68, 0x61, 0x73, 0x6f, 0x63, 0x2f, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x73, 0x2f, 0x66, 0x71, 0x64, 0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6f, 0x12, 0x04, 0x66, 0x71, 0x64, 0x6e, 0x22, 0x3b, 0x0a, 0x0f, 0x52, 0x65, 0x73, 0x6f, 0x6c,
+	0x76, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x73, 0x12, 0x28, 0x0a, 0x04, 0x72, 0x65,
+	0x71, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x66, 0x71, 0x64, 0x6e, 0x2e,
+	0x52, 0x65, 0x73, 0x6f, 0x6c, 0x76, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x52, 0x04,
+	0x72, 0x65, 0x71, 0x73, 0x22, 0x79, 0x0a, 0x0e, 0x52, 0x65, 0x73, 0x6f, 0x6c, 0x76, 0x65, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x66, 0x71, 0x64, 0x6e, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x66, 0x71, 0x64, 0x6e, 0x12, 0x2a, 0x0a, 0x03, 0x73, 0x72,
+	0x63, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x18, 0x2e, 0x66, 0x71, 0x64, 0x6e, 0x2e, 0x52,
+	0x65, 0x73, 0x6f, 0x6c, 0x76, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x2e, 0x53, 0x72,
+	0x63, 0x52, 0x03, 0x73, 0x72, 0x63, 0x22, 0x27, 0x0a, 0x03, 0x53, 0x72, 0x63, 0x12, 0x0b, 0x0a,
+	0x07, 0x55, 0x4e, 0x4b, 0x4e, 0x4f, 0x57, 0x4e, 0x10, 0x00, 0x12, 0x07, 0x0a, 0x03, 0x54, 0x49,
+	0x50, 0x10, 0x01, 0x12, 0x0a, 0x0a, 0x06, 0x57, 0x49, 0x53, 0x44, 0x4f, 0x4d, 0x10, 0x02, 0x42,
+	0x21, 0x5a, 0x1f, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x61, 0x6c,
+	0x70, 0x68, 0x61, 0x73, 0x6f, 0x63, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x73, 0x2f, 0x66, 0x71,
+	0x64, 0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -206,16 +208,17 @@ var file_fqdn_fqdn_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_fqdn_fqdn_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_fqdn_fqdn_proto_goTypes = []interface{}{
 	(ResolveRequest_Src)(0), // 0: fqdn.ResolveRequest.Src
-	(*ResolveRequest)(nil),  // 1: fqdn.ResolveRequest
-	(*ResolveReply)(nil),    // 2: fqdn.ResolveReply
+	(*ResolveRequests)(nil), // 1: fqdn.ResolveRequests
+	(*ResolveRequest)(nil),  // 2: fqdn.ResolveRequest
 }
 var file_fqdn_fqdn_proto_depIdxs = []int32{
-	0, // 0: fqdn.ResolveRequest.src:type_name -> fqdn.ResolveRequest.Src
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	2, // 0: fqdn.ResolveRequests.reqs:type_name -> fqdn.ResolveRequest
+	0, // 1: fqdn.ResolveRequest.src:type_name -> fqdn.ResolveRequest.Src
+	2, // [2:2] is the sub-list for method output_type
+	2, // [2:2] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_fqdn_fqdn_proto_init() }
@@ -225,7 +228,7 @@ func file_fqdn_fqdn_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_fqdn_fqdn_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ResolveRequest); i {
+			switch v := v.(*ResolveRequests); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -237,7 +240,7 @@ func file_fqdn_fqdn_proto_init() {
 			}
 		}
 		file_fqdn_fqdn_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ResolveReply); i {
+			switch v := v.(*ResolveRequest); i {
 			case 0:
 				return &v.state
 			case 1:
